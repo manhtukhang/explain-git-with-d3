@@ -8,7 +8,7 @@ define(['d3'], function () {
     function ControlBox(config) {
         this.historyView = config.historyView;
         this.originView = config.originView;
-        this.initialMessage = config.initialMessage || 'Nhập các lệnh git dúơi đây.';
+        this.initialMessage = config.initialMessage || 'Nhập các lệnh git dưới đây.';
         this._commandHistory = [];
         this._currentCommand = -1;
         this._tempCommand = '';
