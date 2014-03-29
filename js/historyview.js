@@ -751,7 +751,7 @@ define(['d3'], function () {
 
             if (!commit.parent) {
                 if (!this.currentBranch) {
-                    throw new Error('Not a good idea to make commits while in a detached HEAD state.');
+                    throw new Error('Không phải là ý kíên hay để tạo commit trong khi đã tách rời HEAD.');
                 }
 
                 commit.parent = this.getCommit(this.currentBranch).id;
@@ -768,19 +768,19 @@ define(['d3'], function () {
 
         branch: function (name) {
             if (!name || name.trim() === '') {
-                throw new Error('You need to give a branch name.');
+                throw new Error('Bạn phải chỉ ra tên cho nhánh.');
             }
 
             if (name === 'HEAD') {
-                throw new Error('You cannot name your branch "HEAD".');
+                throw new Error('Không được đặt tên nhánh là "HEAD".');
             }
 
             if (name.indexOf(' ') > -1) {
-                throw new Error('Branch names cannot contain spaces.');
+                throw new Error('Tên nhánh không được chứa khoảng trắng.');
             }
 
             if (this.branches.indexOf(name) > -1) {
-                throw new Error('Branch "' + name + '" already exists.');
+                throw new Error('Nhánh "' + name + '" đã thoát.');
             }
 
             this.getCommit('HEAD').tags.push(name);
@@ -793,17 +793,17 @@ define(['d3'], function () {
                 commit;
 
             if (!name || name.trim() === '') {
-                throw new Error('You need to give a branch name.');
+                throw new Error('Bạn phải chỉ ra tên cho nhánh.');
             }
 
             if (name === this.currentBranch) {
-                throw new Error('Cannot delete the currently checked-out branch.');
+                throw new Error('Không thể xóa các nhánh hịên đang checkout.');
             }
 
             branchIndex = this.branches.indexOf(name);
 
             if (branchIndex === -1) {
-                throw new Error('That branch doesn\'t exist.');
+                throw new Error('Nhánh đó không tồn tại.');
             }
 
             this.branches.splice(branchIndex, 1);
@@ -821,7 +821,7 @@ define(['d3'], function () {
             var commit = this.getCommit(ref);
 
             if (!commit) {
-                throw new Error('Cannot find commit: ' + ref);
+                throw new Error('Không tìm thấy commit: ' + ref);
             }
 
             var previousHead = this.getCircle('HEAD'),
@@ -844,7 +844,7 @@ define(['d3'], function () {
             var commit = this.getCommit(ref);
 
             if (!commit) {
-                throw new Error('Cannot find ref: ' + ref);
+                throw new Error('Không tìm thấy tham chiếu: ' + ref);
             }
 
             if (this.currentBranch) {
@@ -861,14 +861,14 @@ define(['d3'], function () {
             var commit = this.getCommit(ref);
 
             if (!commit) {
-                throw new Error('Cannot find ref: ' + ref);
+                throw new Error('Không tìm thấy tham chiếu: ' + ref);
             }
 
             if (this.isAncestor(commit, 'HEAD')) {
                 commit.reverted = true;
                 this.commit({reverts: commit.id});
             } else {
-                throw new Error(ref + 'is not an ancestor of HEAD.');
+                throw new Error(ref + 'không phải là tổ tiên của HEAD.');
             }
         },
 
@@ -888,13 +888,13 @@ define(['d3'], function () {
                 currentCommit = this.getCommit('HEAD');
 
             if (!mergeTarget) {
-                throw new Error('Cannot find ref: ' + ref);
+                throw new Error('Không tìm thấy tham chiếu: ' + ref);
             }
 
             if (currentCommit.id === mergeTarget.id) {
-                throw new Error('Already up-to-date.');
+                throw new Error('Đã cập nhật.');
             } else if (currentCommit.parent2 === mergeTarget.id) {
-                throw new Error('Already up-to-date.');
+                throw new Error('Đã cập nhật.');
             } else if (this.isAncestor(currentCommit, mergeTarget)) {
                 this.fastForward(mergeTarget);
                 return 'Fast-Forward';
@@ -912,13 +912,13 @@ define(['d3'], function () {
                 remainingHusk;
 
             if (!rebaseTarget) {
-                throw new Error('Cannot find ref: ' + ref);
+                throw new Error('Không tìm thấy tham chiếu: ' + ref);
             }
 
             if (currentCommit.id === rebaseTarget.id) {
-                throw new Error('Already up-to-date.');
+                throw new Error('Đã cập nhật.');
             } else if (currentCommit.parent2 === rebaseTarget.id) {
-                throw new Error('Already up-to-date.');
+                throw new Error('Đã cập nhật.');
             }
 
             isCommonAncestor = this.isAncestor(currentCommit, rebaseTarget);
