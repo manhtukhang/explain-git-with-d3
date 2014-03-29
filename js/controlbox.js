@@ -192,7 +192,7 @@ define(['d3'], function () {
                     try {
                         this.historyView.branch(name);
                     } catch (err) {
-                        if (err.message.indexOf('sãn sàng thoát') === -1) {
+                        if (err.message.indexOf('already exists') === -1) {
                             throw new Error(err.message);
                         }
                     }
@@ -220,7 +220,7 @@ define(['d3'], function () {
                 case '--mixed':
                     this.info(
                         'Tùy chọn "--mixed" hoạt động trên git thật ' +
-                        'Nhưng trong bản demo này thì không thể. ' +
+                        'Nhưng trong bản demo này thì không thể. '
                     );
                     break;
                 case '--hard':
