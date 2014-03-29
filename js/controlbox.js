@@ -8,7 +8,7 @@ define(['d3'], function () {
     function ControlBox(config) {
         this.historyView = config.historyView;
         this.originView = config.originView;
-        this.initialMessage = config.initialMessage || 'Enter git commands below.';
+        this.initialMessage = config.initialMessage || 'Nhập các lệnh git dúơi đây.';
         this._commandHistory = [];
         this._currentCommand = -1;
         this._tempCommand = '';
@@ -31,7 +31,7 @@ define(['d3'], function () {
 
             input = cBoxContainer.append('input')
                 .attr('type', 'text')
-                .attr('placeholder', 'enter git command');
+                .attr('placeholder', 'nhập lệnh git');
 
             input.on('keyup', function () {
                 var e = d3.event;
@@ -140,7 +140,7 @@ define(['d3'], function () {
         },
 
         error: function (msg) {
-            msg = msg || 'I don\'t understand that.';
+            msg = msg || 'Không hiểu lệnh này!';
             this.log.append('div').classed('error', true).html(msg);
             this._scrollToBottom();
         },
@@ -152,9 +152,9 @@ define(['d3'], function () {
         branch: function (args) {
             if (args.length < 1) {
                 this.info(
-                    'You need to give a branch name. ' +
-                    'Normally if you don\'t give a name, ' +
-                    'this command will list your local branches on the screen.'
+                    'Bạn phải chỉ ra tên nhánh. ' +
+                    'Nếu bạn không chỉ ra tên cụ thể, ' +
+                    'lệnh này sẽ liệt kê các nhánh cục bộ của bạn ra màn hình.'
                 );
 
                 return;
@@ -166,7 +166,7 @@ define(['d3'], function () {
                 switch (arg) {
                 case '--remote':
                     this.info(
-                        'This command normally displays all of your remote tracking branches.'
+                        'Lệnh này thông thường sẽ hiển thị tất các các nhánh đang theo dõi từ xa'
                     );
                     args.length = 0;
                     break;
@@ -192,7 +192,7 @@ define(['d3'], function () {
                     try {
                         this.historyView.branch(name);
                     } catch (err) {
-                        if (err.message.indexOf('already exists') === -1) {
+                        if (err.message.indexOf('sãn sàng thoát') === -1) {
                             throw new Error(err.message);
                         }
                     }
@@ -212,15 +212,15 @@ define(['d3'], function () {
                 switch (arg) {
                 case '--soft':
                     this.info(
-                        'The "--soft" flag works in real git, but ' +
-                        'I am unable to show you how it works in this demo. ' +
-                        'So I am just going to show you what "--hard" looks like instead.'
+                        'Tùy chọn "--soft" hoạt động trên git thật ' +
+                        'Nhưng trong bản demo này thì không thể. ' +
+                        'Nên thay vào đó chỉ có thể cho bạn thấy tùy chọn "--hard" mà thôi.'
                     );
                     break;
                 case '--mixed':
                     this.info(
-                        'The "--mixed" flag works in real git, but ' +
-                        'I am unable to show you how it works in this demo.'
+                        'Tùy chọn "--mixed" hoạt động trên git thật ' +
+                        'Nhưng trong bản demo này thì không thể. ' +
                     );
                     break;
                 case '--hard':
@@ -230,14 +230,14 @@ define(['d3'], function () {
                 default:
                     var remainingArgs = [arg].concat(args);
                     args.length = 0;
-                    this.info('Assuming "--hard".');
+                    this.info('Đang giả định "--hard".');
                     this.historyView.reset(remainingArgs.join(' '));
                 }
             }
         },
 
         clean: function (args) {
-            this.info('Deleting all of your untracked files...');
+            this.info('Đang xóa tất các các tệp không được theo dõi...');
         },
 
         revert: function (args) {
@@ -249,7 +249,7 @@ define(['d3'], function () {
                 result = this.historyView.merge(ref);
 
             if (result === 'Fast-Forward') {
-                this.info('You have performed a fast-forward merge.');
+                this.info('Bạn đã thực hiệc việc trộn chuyển tiếp nhanh (fast-forward merge).');
             }
         },
 
@@ -258,13 +258,13 @@ define(['d3'], function () {
                 result = this.historyView.rebase(ref);
 
             if (result === 'Fast-Forward') {
-                this.info('Fast-forwarded to ' + ref + '.');
+                this.info('Đã chuyển tiếp nhanh đến ' + ref + '.');
             }
         },
 
         fetch: function () {
             if (!this.originView) {
-                throw new Error('There is no remote server to fetch from.');
+                throw new Error('Không có máy chủ từ xa để lấy về.');
             }
 
             var origin = this.originView,
@@ -319,7 +319,7 @@ define(['d3'], function () {
                     local.moveTag('origin/' + fb, remoteLoc);
                 }
 
-                resultMessage += 'Fetched ' + fetchBranches[fb] + ' commits on ' + fb + '.</br>';
+                resultMessage += 'Đã lấy ' + fetchBranches[fb] + ' các commit trên ' + fb + '.</br>';
             }
 
             this.info(resultMessage);
@@ -337,11 +337,11 @@ define(['d3'], function () {
             this.fetch();
 
             if (!currentBranch) {
-                throw new Error('You are not currently on a branch.');
+                throw new Error('Bạn đang không ở trên 1 nhánh.');
             }
 
             if (local.branches.indexOf(rtBranch) === -1) {
-                throw new Error('Current branch is not set up for pulling.');
+                throw new Error('Nhánh hiện tại không được thiết lập để kéo về.');
             }
 
             setTimeout(function () {
@@ -356,7 +356,7 @@ define(['d3'], function () {
                 }
 
                 if (isFastForward) {
-                    control.info('Fast-forwarded to ' + rtBranch + '.');
+                    control.info('Đã chuyển tiếp nhanh đến ' + rtBranch + '.');
                 }
             }, 750);
         },
@@ -375,7 +375,7 @@ define(['d3'], function () {
                 toPush = [];
 
             if (remoteName === 'history') {
-                throw new Error('Sorry, you can\'t have a remote named "history" in this example.');
+                throw new Error('Xin lỗi, bạn không thể có 1 tên từ xa "history" trong ví dụ này.');
             }
 
             if (!remote) {
@@ -390,11 +390,11 @@ define(['d3'], function () {
             }
 
             if (local.branches.indexOf(localRef) === -1) {
-                throw new Error('Local ref: ' + localRef + ' does not exist.');
+                throw new Error('Tham chiếu cục bộ: ' + localRef + ' không tồn tại.');
             }
 
             if (!remoteRef) {
-                throw new Error('No remote branch was specified to push to.');
+                throw new Error('Không có nhánh từ xa nào được chỉ định để đẩy lên');
             }
 
             localCommit = local.getCommit(localRef);
@@ -425,13 +425,13 @@ define(['d3'], function () {
             // push to an existing branch on the remote
             if (remoteCommit && remote.branches.indexOf(remoteRef) > -1) {
                 if (!local.isAncestor(remoteCommit.id, localCommit.id)) {
-                    throw new Error('Push rejected. Non fast-forward.');
+                    throw new Error('Từ chối đẩy. Không phải chuyển tíêp nhanh.');
                 }
 
                 isCommonCommit = localCommit.id === remoteCommit.id;
 
                 if (isCommonCommit) {
-                    return this.info('Everything up-to-date.');
+                    return this.info('Mọi thứ đã được cập nhật');
                 }
 
                 findCommitsToPush(localCommit);
@@ -440,7 +440,7 @@ define(['d3'], function () {
                 remote.moveTag(remoteRef, toPush[toPush.length - 1].id);
                 remote.renderCommits();
             } else {
-                this.info('Sorry, creating new remote branches is not supported yet.');
+                this.info('Xin lỗi, vịêc tạo các nhánh mới hiện tại chưa được hỗ trợ.');
             }
         },
 
