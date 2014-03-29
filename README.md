@@ -1,13 +1,12 @@
 ﻿explain-git-with-d3
 ===================
 
-Use D3 to visualize simple git branching operations.
+Sử dụng D3 để trực quan hóa việc quản lí bằng git.
 
-This simple project is designed to help people understand some basic git concepts visually.
+Dự án này được thiết kế để giúp hỉêu rõ một vài khái niệm git một cách trực quan.
 
-This is my first attempt at using both SVG and D3. I hope it is helpful to you.
+Đây là lần đầu tiên tôi sử dụng SVG và D3. Hi vọng bạn cảm thấy nó có ích!
 
-I upload the contents of this repository via FTP every once in a while to: http://www.wei-wang.com/ExplainGitWithD3/
-so you can just visit that site to use an (almost) up to date version.
+Bạn có thể lấy về mã nguồn và chỉnh sửa, bổ sung theo ý thích, chỉ cần bạn cũng để nó "mở" là được.
 
-UPDATE: the page can now also be accessed via: http://onlywei.github.io/explain-git-with-d3/
+Vào trang sau để sử dụng: http://manhtuvjp.github.io/explain-git-with-d3
