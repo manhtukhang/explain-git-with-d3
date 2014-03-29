@@ -2,14 +2,14 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<title>Explain Git with D3</title>
+<title>Explain Git with D3 - Khang Mạnh Tử</title>
 <script data-main="js/main" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js"></script>
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/1140/2.0/1140.css">
 <link rel="stylesheet" href="css/explaingit.css">
 </head>
 <body>
-<a href="https://github.com/onlywei/explain-git-with-d3">
+<a href="https://github.com/manhtuvjp/explain-git-with-d3">
   <img style="position: absolute; top: 0; right: 0; border: 0;"
     src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
     alt="Fork me on GitHub">
@@ -17,25 +17,24 @@
 <div class="container">
   <div class="row intro">
     <div class="twelvecol">
-      <h1>Visualizing Git Concepts with D3</h1>
+      <h1>Trực quan hóa thao tác trên Git với D3</h1>
       <p>
-        This website is designed to help you understand some basic git concepts visually.
-        This is my first attempt at using both SVG and D3. I hope it is helpful to you.
+        Trang web này được thiết kế để giúp bạn hiểu một số khái niệm cơ bản git bằng phương pháp trực quan.
+        Đây là lần đầu tiên tôi sử dụng SVG và D3. Hi vọng bạn cảm thấy nó có ích!
       </p>
       <p>
-        Adding/staging your files for commit will not be covered by this site. In all sandbox playgrounds
-        on this site, just pretend that you always have files staged and ready to commit at all times.
-        If you need a refresher on how to add or stage files for commit, please read
-        <a href="http://git-scm.com/book/en/Git-Basics-Recording-Changes-to-the-Repository">Git Basics</a>.
+        Các tệp mà bạn commit sẽ không được ghi lại bởi trang này. Bạn có thể coi như đang chạy trên máy ảo.
+        Nếu cần thêm thông tin về cách add/stage, vui lòng đọc
+        <a href="http://git-scm.com/book/vi/C%C6%A1-B%E1%BA%A3n-V%E1%BB%81-Git-Ghi-L%E1%BA%A1i-Thay-%C4%90%E1%BB%95i-v%C3%A0o-Kho-Ch%E1%BB%A9a">Git Basics</a>.
       </p>
       <p>
-        Sandboxes are split by specific git commands, listed below.
+        Mỗi lệnh sẽ được chia nhỏ vào các "hộp cát" sau:
       </p>
     </div>
   </div>
   <div class="row command-list">
     <div class="twocol">
-      <h4>Basic Commands</h3>
+      <h4>Các lệnh cơ bản</h3>
       <a id="open-commit" class="openswitch" href="#">git commit</a>
       <a id="open-branch" class="openswitch" href="#">git branch</a>
     </div>
@@ -45,17 +44,17 @@
       <a id="open-checkout-b" class="openswitch" href="#">git checkout -b</a>
     </div>
     <div class="twocol">
-      <h4>Undo Commits</h4>
+      <h4>Undo các Commit</h4>
       <a id="open-reset" class="openswitch" href="#">git reset</a>
       <a id="open-revert" class="openswitch" href="#">git revert</a>
     </div>
     <div class="twocol">
-      <h4>Combine Branches</h4>
+      <h4>Kết hợp nhánh</h4>
       <a id="open-merge" class="openswitch" href="#">git merge</a>
       <a id="open-rebase" class="openswitch" href="#">git rebase</a>
     </div>
     <div class="twocol">
-      <h4>Remote Server</h4>
+      <h4>Máy chủ từ xa</h4>
       <a id="open-fetch" class="openswitch" href="#">git fetch</a>
       <a id="open-pull" class="openswitch" href="#">git pull</a>
     </div>
@@ -67,201 +66,197 @@
   <div class="row concept-area">
     <div id="ExplainGitCommit-Container" class="twelvecol concept-container">
       <p>
-        We are going to skip instructing you on how to add your files for commit in this explanation.
-        Let's assume you already know how to do that. If you don't, go read some other tutorials.
+        Tôi sẽ bỏ qua việc hướng dẫn bạn cách thêm tệp vào trước khi commit.
+        Chúng ta giả sử bạn đã biết cách làm điều đó như thế nào.
+        Nếu không bạn hãy đọc các hướng dẫn cơ bản về Git trước đã.
       </p>
       <p>
-        Pretend that you already have your files staged for commit and enter <span class="cmd">git commit</span>
-        as many times as you like in the terminal box.
+        Giả sử bạn đã có các tệp được `staged' cho `commit', hãy gõ <span class="cmd">git commit</span>
+        vài lần để xem nó hoạt động ra sao.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitBranch-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git branch name</span> will create a new branch named "name".
-        Creating branches just creates a new tag pointing to the currently checked out commit.
+        <span class="cmd">git branch tênnhánh</span> sẽ tạo ra 1 nhánh có tên "tênnhánh".
+        Tạo nhánh chỉ tạo ra 1 thẻ trỏ vào `commit' hiện tại đang được `checkout'.
       </p>
       <p>
-        Branches can be deleted using the command <span class="cmd">git branch -d name</span>.
+        Nhánh có thể xóa bằng lệnh <span class="cmd">git branch -d tênnhánh</span>.
       </p>
       <p>
-        Type <span class="cmd">git commit</span> and <span class="cmd">git branch</span> commands
-        to your hearts desire until you understand this concept.
+        Gõ <span class="cmd">git commit</span> và <span class="cmd">git branch</span>
+        cho đến khi bạn hiểu về khái niệm này.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitCheckout-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git checkout</span> has many uses,
-        but the main one is to switch between branches.</br>
-        For example, to switch from master branch to dev branch,
-        I would type <span class="cmd">git checkout dev</span>.
-        After that, if I do a git commit, notice where it goes. Try it.
+        <span class="cmd">git checkout</span> có nhiều công dụng,
+        nhưng chính vẫn là để chuyển giữa các nhánh.</br>
+        Ví dụ, để chuyển từ nhánh `master' đến nhánh `dev',
+        Gõ <span class="cmd">git checkout dev</span>.
+        Sau đó, nếu gõ `git commit', để ý xem nó sẽ đi đâu. Thử đi.
       </p>
       <p>
-        In addition to checking out branches, you can also checkout individual commits. Try it.</br>
-        Make a new commit and then type <span class="cmd">git checkout bb92e0e</span>
-        and see what happens.
+        Ngoài việc chuyển giữa các nhánh, bạn cũng có thể chuyển giữa các `commit' riêng rẽ. Thử đi.</br>
+        Tạo 1 commit rồi gõ <span class="cmd">git checkout bb92e0e</span>
+        và xem có gì thay đổi.
       </p>
       <p>
-        Type <span class="cmd">git commit</span>, <span class="cmd">git branch</span>,
-        and <span class="cmd">git checkout</span> commands to your hearts desire
-        until you understand this concept.
+        Gõ <span class="cmd">git commit</span>, <span class="cmd">git branch</span>,
+        và <span class="cmd">git checkout</span> vài lần để hiểu rõ hơn.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitCheckout-b-Container" class="twelvecol concept-container">
       <p>
-        You can combine <span class="cmd">git branch</span> and <span class="cmd">git checkout</span>
-        into a single command by typing <span class="cmd">git checkout -b branchname</span>.
-        This will create the branch if it does not already exist and immediately check it out.
+        Bạn có thể gộp <span class="cmd">git branch</span> và <span class="cmd">git checkout</span>
+        vào chung 1 lệnh bằng cách gõ <span class="cmd">git checkout -b tênnhánh</span>.
+        Nó sẽ tạo ra 1 nhánh nếu chưa có và sẽ chuyển qua nhánh đó ngay lập tức.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitReset-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git reset</span> will move HEAD and the current branch back to wherever
-        you specify, abandoning any commits that may be left behind. This is useful to undo a commit
-        that you no longer need.
+        <span class="cmd">git reset</span> sẽ chuyển con trỏ HEAD và nhánh hiện tại lại bất cứ chỗ nào
+        bạn chỉ định, đồng thời bỏ qua bất kì commit nào còn lại ở phía sau. Sẽ hữu ích nếu bạn muốn hủy bỏ 1 commit
+        mà bạn không cần đến nữa.
       </p>
       <p>
-        This command is normally used with one of three flags: "--soft", "--mixed", and "--hard".
-        The soft and mixed flags deal with what to do with the work that was inside the commit after
-        you reset, and you can read about it <a href="http://git-scm.com/2011/07/11/reset.html">here</a>.
-        Since this visualization cannot graphically display that work, only the "--hard" flag will work
-        on this site.
+        Lệnh này thông thường được sử dụng với 3 tùy chọn sau đây: "--soft", "--mixed", và "--hard".
+        Tùy chọn `soft' và `mixed' bạn đọc thêm ở <a href="http://git-scm.com/2011/07/11/reset.html">đây</a>.
+        Trang này không thể hỉên thị 2 tùy chọn trên thực hiện ra sao, chỉ có "--hard" là được sử dụng ở đây.
       </p>
       <p>
-        The ref "HEAD^" is usually used together with this command. "HEAD^" means "the commit right
-        before HEAD. "HEAD^^" means "two commits before HEAD", and so on.
+        Tham chiếu "HEAD^" thường được sử dụng kèm với lệnh này. "HEAD^" có nghĩa "commit trước HEAD". "HEAD^^" có nghĩa "2 commit trước HEAD", và tương tự...
       </p>
       <p>
-        Note that you must <b>never</b> use <span class="cmd">git reset</span> to abandon commits
-        that have already been pushed and merged into the origin. This can cause your local repository
-        to become out of sync with the origin. Don't do it unless you really know what you're doing.
+        Chú ý: bạn <b>không</b> được sử dụng <span class="cmd">git reset</span> để hủy bỏ các commit
+        đã được đẩy và gộp lên kho chứa chung. Điều này có thể khiến kho chứa cục bộ của bạn vượt ra khỏi
+        việc đồng bộ hóa với kho chứa chung. Chỉ làm khi bạn chắc chắn về hậu quả của việc đó.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitRevert-Container" class="twelvecol concept-container">
       <p>
-        To undo commits that have already been pushed and shared with the team, we cannot use the
-        <span class="cmd">git reset</span> command. Instead, we have to use <span class="cmd">git revert</span>.
+        Để hủy bỏ những `commit' đã đẩy lên kho chứa chung và chia sẻ với mọi người, chúng ta không sử dụng
+        <span class="cmd">git reset</span>. Thay vào đó, ta phải sử dụng lệnh <span class="cmd">git revert</span>.
       </p>
       <p>
-        <span class="cmd">git revert</span> will create a new commit that will undo all of the work that
-        was done in the commit you want to revert.
+        <span class="cmd">git revert</span> tạo ra 1 `commit' mà hủy tất cả công việc đã hoàn thành trong `commit'
+        bạn muốn `revert'.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitMerge-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git merge</span> will create a new commit with two parents. The resulting
-        commit snapshot will have the all of the work that has been done in both branches.
+        <span class="cmd">git merge</span> sẽ tạo ra 1 `commit' với 2 cha. Kết quả là `commit' đó sẽ chứa
+        cả kết quả của 2 nhánh cha.
       </p>
       <p>
-        If there was no divergence between the two commits, git will do a "fast-forward" method merge.</br>
-        To see this happen, checkout the 'ff' branch and then type <span class="cmd">git merge dev</span>.
+        Nếu không có sự khác biệt giữa 2 `commit', git sẽ thực hiện phương pháp gộp "chuyển tiếp nhanh".</br>
+        Để xem điều gì xảy ra, hãy `checkout' nhánh 'ff' rồi gõ <span class="cmd">git merge dev</span>.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitRebase-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git rebase</span> will take the commits on this branch and "move" them so that their
-        new "base" is at the point you specify.
+        <span class="cmd">git rebase</span> sẽ đưa các commit trên nhánh này và "chuyển" chúng nên "base" mới
+        của chúng sẽ là điểm mà bạn chỉ định.
       </p>
       <p>
-        You should pay close attention to the commit IDs of the circles as they move when you do this exercise.
+        Bạn nên chú ý đến các `commit ID' trong vòng tròn khi chúng di chuyển lúc bạn làm bài tập này.
       </p>
       <p>
-        The reason I put "move" in quotations because this process actually generates brand new commits with
-        completely different IDs than the old commits, and leaves the old commits where they were. For this reason,
-        you never want to rebase commits that have already been shared with the team you are working with.
+        Lý do mà tôi để từ "chuyển" trong dấu "" là bởi vì vịêc này thực chất sẽ tạo ra các commit mới với ID
+        hoàn toàn khác các commit cũ, đồng thời bỏ lại các commit cũ. Chính vì lý do này, bạn sẽ không muốn
+        (chính xác hơn là không được) `rebase' các commit mà đã đẩy lên kho chung và chia sẻ với mọi người.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitFetch-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git fetch</span> will update all of the "remote tracking branches" in your local repository.
-        Remote tracking branches are tagged in grey.
+        <span class="cmd">git fetch</span> sẽ cập nhật tất cả "các nhánh đang theo dõi từ xa" trong kho chứa cục bộ.
+        Các nhánh đang theo dõi từ xa được đánh dấu trong thẻ màu xám.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitPull-Container" class="twelvecol concept-container">
       <p>
-        A <span class="cmd">git pull</span> is a two step process that first does a <span class="cmd">git fetch</span>,
-        and then does a <span class="cmd">git merge</span> of the remote tracking branch associated with your current branch.
-        If you have no current branch, the process will stop after fetching.
+        A <span class="cmd">git pull</span> là 2 bước trong đó bước thứ nhất là <span class="cmd">git fetch</span>,
+        và rồi sau đó là <span class="cmd">git merge</span> của nhánh đang theo dõi từ xa liên quan đến nhánh
+        hiện tại của bạn.
+        Nếu bạn không có co nhánh nào hiện tại, tiến trình sẽ dừng sau khi "fetch" (lấy thông tin).
       </p>
       <p>
-        If the argument "--rebase" was given by typing <span class="cmd">git pull --rebase</span>, the second step of
-        pull process will be a rebase instead of a merge. This can be set to the default behavior by configuration by typing:
+        Nếu đối số "--rebase" được đưa vào bằng cách gõ <span class="cmd">git pull --rebase</span>, thì bước thứ 2
+        sẽ `rebase' thay vì `merge'. ều này có thể đặt mặc địinh trong cấu hình bằng cách gõ:
         <span class="cmd">git config branch.BRANCHNAME.rebase true</span>.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitPush-Container" class="twelvecol concept-container">
       <p>
-        A <span class="cmd">git push</span> will find the commits you have on your local branch that the corresponding branch
-        on the origin server does not have, and send them to the remote repository.
+        A <span class="cmd">git push</span> sẽ tìm các commit trong kho cục bộ của bạn có nhưng trên kho chứa chung
+        chưa có, và sẽ đẩy chúng lên kho chứa chung đó.
       </p>
       <p>
-        By default, all pushes must cause a fast-forward merge on the remote repository. If there is any divergence between
-        your local branch and the remote branch, your push will be rejected. In this scenario, you need to pull first and then
-        you will be able to push again.
+        Mặc định, `push' sẽ tạo ra gộp chuyển tiếp nhanh (fast-forward merge) trên kho chung. Nếu có bất kì khác biệt
+        nào giữa kho bạn và kho chung thì sẽ bị từ chối. Trong trường hợp này, bạn phải `pull' trước rồi sau đó mới
+        `push' lại lần nữa.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitClean-Container" class="twelvecol concept-container">
       <p>
-        One simple example of the use of <span class="cmd">git reset</span> is to completely restore your local repository
-        state to that of the origin.</br>
-        You can do so by typing <span class="cmd">git reset origin/master</span>.
+        Một ví dụ về việc sư dụng <span class="cmd">git reset</span> là hoàn toàn khôi phục kho chứa của bạn về
+        trạng thái gốc.</br>
+        Bạn có thể gõ <span class="cmd">git reset origin/master</span>.
       </p>
       <p>
-        Note that this won't delete untracked files, you will have to delete those separately with
-        the command <span class="cmd">git clean -df</span>.
+        Chú ý: điều này sẽ không xóa các tệp chưa đánh dấu, bạn sẽ phải xóa chúng riêng với lệnh <span class="cmd">git clean -df</span>.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitFetchRebase-Container" class="twelvecol concept-container">
       <p>
-        Below is a situation in which you are working in a local branch that is all your own. You want to receive the latest code
-        from the origin server's master branch. To update your local branch, you can do it without having to switch branches!
+        Dưới đây là một tình huống mà bạn đang làm việc trong 1 nhánh cục bộ của mình. Bạn muốn nhận được code mới
+        nhất từ nhánh `master' trên máy chủ gốc. Để cập nhật nhánh cục bộ, bạn có thể thực hiện mà không phải chuyển nhánh!
       </p>
       <p>
-        First do a <span class="cmd">git fetch</span>, then type <span class="cmd">git rebase origin/master</span>!
+        Đầu tiên hãy <span class="cmd">git fetch</span>, sau đó <span class="cmd">git rebase origin/master</span>!
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitDeleteBranches-Container" class="twelvecol concept-container">
       <p>
-        <span class="cmd">git branch -d</span> is used to delete branches.
-        I have pre-created a bunch of branches for you to delete in the playground below.
-        Have at it.
+        <span class="cmd">git branch -d</span> được sử dụng để xóa 1 nhánh.
+        Tôi đã tạo ra các nhánh có sẵn dưới đây cho bạn.
       </p>
       <div class="playground-container"></div>
     </div>
     <div id="ExplainGitFree-Container" class="twelvecol concept-container">
       <p>
-        Do whatever you want in this free playground.
+        Làm bất cứ điều gì trong "sân chơi này" đi!
       </p>
       <div class="playground-container"></div>
     </div>
   </div>
   <div class="row">
     <div class="twelvecol">
-      <h2>Specific Examples</h2>
-      <p>Below I have created some specific real-world scenarios that I feel are quite common and useful.</p>
+      <h2>Các ví dụ cụ thể</h2>
+      <p>Dưới đây tôi đã tạo ra một số tình huống thực tế mà tôi cảm thấy khá phổ biến và hữu ích.</p>
     </div>
   </div>
   <div class="row example-list">
     <div class="tencol">
-      <a id="open-clean" class="openswitch" href="#">Restore Local Branch to State on Origin Server</a>
-      <a id="open-fetchrebase" class="openswitch" href="#">Update Private Local Branch with Latest from Origin</a>
-      <a id="open-deletebranches" class="openswitch" href="#">Deleting Local Branches</a>
+      <a id="open-clean" class="openswitch" href="#">Khôi phục nhánh cục bộ về trạng thái trên máy chủ gốc</a>
+      <a id="open-fetchrebase" class="openswitch" href="#">Cập nhật nhánh cục bộ riêng tư từ gốc</a>
+      <a id="open-deletebranches" class="openswitch" href="#">Xóa các nhánh cục bộ</a>
     </div>
     <div class="twocol last">
-      <a id="open-freeplay" class="openswitch" href="#">Free Playground</a>
+      <a id="open-freeplay" class="openswitch" href="#">"Sân chơi tự do"</a>
     </div>
   </div>
 </div>
@@ -302,7 +297,7 @@ require(['explaingit'], function (explainGit) {
             commitData: [
                 {id: 'e137e9b', tags: ['master']}
             ],
-            initialMessage: 'Type git commit a few times.'
+            initialMessage: 'Gõ `git commit` vài lần.'
         });
     };
 
@@ -350,7 +345,7 @@ require(['explaingit'], function (explainGit) {
                 {id: 'e088135', parent: 'e137e9b', tags: ['dev']}
             ],
             initialMessage:
-                'Use git checkout, git branch, and git commit commands until you understand.'
+                'Sử dụng lệnh git checkout, git branch, và git commit cho đến khi hiểu.'
         });
     };
 
@@ -377,7 +372,7 @@ require(['explaingit'], function (explainGit) {
                 {id: 'e088135', parent: 'e137e9b', tags: ['dev']}
             ],
             initialMessage:
-                'Use git checkout -b and git commit commands until you understand.'
+                'Sử dụng lệnh git checkout -b and git commit cho đến khi hiểu.'
         });
     };
 
@@ -403,7 +398,7 @@ require(['explaingit'], function (explainGit) {
                 {id: '0e70093', parent: 'e137e9b'},
                 {id: '3e33afd', parent: '0e70093', tags: ['master']}
             ],
-            initialMessage: 'Type "git reset HEAD^".'
+            initialMessage: 'Gõ "git reset HEAD^".'
         });
     };
 
@@ -429,7 +424,7 @@ require(['explaingit'], function (explainGit) {
                 {id: '0e70093', parent: 'e137e9b'},
                 {id: '3e33afd', parent: '0e70093', tags: ['master']}
             ],
-            initialMessage: 'Type "git revert 0e70093".'
+            initialMessage: 'Gõ "git revert 0e70093".'
         });
     };
 
@@ -456,7 +451,7 @@ require(['explaingit'], function (explainGit) {
                 {id: 'e088135', parent: 'f5b32c8', tags: ['dev']}
             ],
             initialMessage:
-                'Type "git merge dev".'
+                'Gõ "git merge dev".'
         });
     };
 
@@ -484,7 +479,7 @@ require(['explaingit'], function (explainGit) {
             ],
             currentBranch: 'dev',
             initialMessage:
-                'Type "git rebase master".'
+                'Gõ "git rebase master".'
         });
     };
 
@@ -521,8 +516,8 @@ require(['explaingit'], function (explainGit) {
                 {id: '29235ca', parent: '2f8d946', tags: ['dev']}
             ],
             initialMessage:
-                'Carefully compare the commit IDs between the origin and the local repository. ' +
-                'Then type "git fetch".'
+                'So sánh cẩn thận các commit ID giưã origin và kho cục bộ. ' +
+                'Rồi gõ "git fetch".'
         });
     };
 
@@ -553,8 +548,8 @@ require(['explaingit'], function (explainGit) {
                 {id: 'ee5df4b', parent: '090e2b8', tags: ['master']}
             ],
             initialMessage:
-                'Carefully compare the commit IDs between the origin and the local repository. ' +
-                'Then type "git pull".'
+                'So sánh cẩn thận các commit ID giưã origin và kho cục bộ. ' +
+                'Rồi gõ "git pull".'
         });
     };
 
@@ -583,8 +578,8 @@ require(['explaingit'], function (explainGit) {
                 {id: '7eb7654', parent: 'e137e9b', tags: ['master']}
             ],
             initialMessage:
-                'Carefully compare the commit IDs between the origin and the local repository. ' +
-                'Then type "git push".'
+                'So sánh cẩn thận các commit ID giưã origin và kho cục bộ. ' +
+                'Rồi gõ "git push".'
         });
     };
 
@@ -610,7 +605,7 @@ require(['explaingit'], function (explainGit) {
                 {id: '0e70093', parent: 'e137e9b'},
                 {id: '3e33afd', parent: '0e70093', tags: ['master']}
             ],
-            initialMessage: 'Type "git reset origin/master".'
+            initialMessage: 'Gõ "git reset origin/master".'
         });
     };
 
@@ -643,7 +638,7 @@ require(['explaingit'], function (explainGit) {
                 {id: 'ee5df4b', parent: '090e2b8', tags: ['master']}
             ],
             initialMessage:
-                'First type "git fetch". Then type "git rebase origin/master".'
+                'Đầu tiên gõ "git fetch". Sau đó gõ "git rebase origin/master".'
         });
     };
 
@@ -676,7 +671,7 @@ require(['explaingit'], function (explainGit) {
             ],
             currentBranch: 'terran',
             initialMessage:
-                'Delete some branches.'
+                'Xóa vài nhánh.'
         });
     };
 
@@ -706,7 +701,7 @@ require(['explaingit'], function (explainGit) {
                 {id: 'ee5df4b', parent: '090e2b8', tags: ['master']}
             ],
             initialMessage:
-                'Have fun.'
+                'Chúc vui!'
         });
     };
 
